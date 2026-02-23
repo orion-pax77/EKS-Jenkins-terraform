@@ -1,17 +1,3 @@
-Below is a **proper README documentation (Ubuntu/Debian based EC2)** that you can directly paste into your GitHub repository.
-
-It includes:
-
-* EC2 setup (Ubuntu)
-* Jenkins installation
-* Terraform installation
-* AWS CLI installation
-* Adding AWS credentials in Jenkins
-* Creating Pipeline Job from SCM
-* Building the job
-
----
-
 # 🚀 Jenkins + Terraform + EKS Setup Guide (Ubuntu EC2)
 
 This project provisions an **Amazon EKS Cluster and Node Group** using **Terraform** executed through a **Jenkins Pipeline**.
@@ -38,7 +24,7 @@ Go to **AWS Console → EC2 → Launch Instance**
 ### Select:
 
 * AMI → **Ubuntu Server 22.04 LTS**
-* Instance Type → `t2.medium`
+* Instance Type → `c7i-flex.large`
 * Storage → 20GB
 * Security Group:
 
@@ -66,7 +52,6 @@ ssh -i your-key.pem ubuntu@your-public-ip
 
 ```bash
 sudo apt update -y
-sudo apt upgrade -y
 ```
 
 ---
@@ -75,7 +60,6 @@ sudo apt upgrade -y
 
 ```bash
 sudo apt install openjdk-17-jdk -y
-java -version
 ```
 
 ---
@@ -122,15 +106,6 @@ Install suggested plugins and complete setup.
 
 ---
 
-# 🟢 Install Git
-
-```bash
-sudo apt install git -y
-git --version
-```
-
----
-
 # 🟢 Install Terraform (Ubuntu)
 
 ```bash
@@ -158,7 +133,7 @@ terraform -version
 # 🟢 Install AWS CLI
 
 ```bash
-sudo apt install awscli -y
+sudo snap insatll aws-cli --classic 
 ```
 
 Verify:
@@ -281,42 +256,6 @@ Jenkins will:
 * Node Group provisioning: 5–10 minutes
 
 ---
-
-# 🛑 To Destroy Infrastructure
-
-Run in terminal:
-
-```bash
-terraform destroy
-```
-
-Or create a separate Jenkins destroy pipeline.
-
----
-
-# 📂 Repository Structure
-
-```
-Jenkins-Terraform-EKS/
-│
-├── main.tf
-├── variables.tf
-├── outputs.tf
-└── Jenkinsfile
-```
-
----
-
-# 🔐 Best Practice (Recommended for Production)
-
-Instead of Access Keys:
-
-* Attach IAM Role to EC2
-* Give it EKS + EC2 + IAM permissions
-* Avoid hardcoding credentials
-
----
-
 # 🎯 Final Result
 
 After successful build:
@@ -329,11 +268,19 @@ After successful build:
 
 ---
 
-If you want, I can now create:
 
-* 📊 Architecture Diagram
-* 🧠 Interview explanation for this project
-* 🏆 Resume-ready DevOps project description
-* 🔥 Production-grade setup with S3 backend + DynamoDB locking
+# 🛑 To Destroy Infrastructure
 
-Just tell me what you need next 🚀
+Run this commands in terminal:
+
+```bash
+cd var/lib/jenkins/workspace/eks-terraform-pipeline
+```
+
+```bash
+terraform destroy
+```
+Or create a separate Jenkins destroy pipeline.
+
+---
+
