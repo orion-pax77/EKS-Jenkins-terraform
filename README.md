@@ -271,11 +271,12 @@ After successful build:
 
 # 🛑 To Destroy Infrastructure
 
-Run this commands in terminal:
+Navigate to the terraform.tfstate file:
 
 ```bash
-cd var/lib/jenkins/workspace/eks-terraform-pipeline
+cd /var/lib/jenkins/workspace/eks-terraform-pipeline
 ```
+Run this command:
 
 ```bash
 terraform destroy
