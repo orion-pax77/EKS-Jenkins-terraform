@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git pull') {
             steps {
-                git branch: 'main', url: 'https://github.com/orion-pax77/Jenkins-Terraform-EKS/edit/main/Jenkinsfile.git'
+                git branch: 'main', url: 'https://github.com/orion-pax77/Jenkins-Terraform-EKS.git'
             }
         }
         stage('terraform init') {
