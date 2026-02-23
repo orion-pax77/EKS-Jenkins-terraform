@@ -38,8 +38,8 @@ data "aws_subnets" "default" {
 }
 
 
-resource "aws_eks_cluster" "cluster1" {
-  name     = "cluster1"
+resource "aws_eks_cluster" "cluster" {
+  name     = "cluster"
   role_arn = aws_iam_role.cluster.arn
 
 
@@ -86,7 +86,7 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSWorkerNodeMinimalPol
 }
 
 resource "aws_eks_node_group" "node" {
-  cluster_name    = aws_eks_cluster.cluster1.name
+  cluster_name    = aws_eks_cluster.cluster.name
   node_group_name = "node_group"
   node_role_arn   = aws_iam_role.node-b63.arn
   subnet_ids      = data.aws_subnets.default.ids
