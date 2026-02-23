@@ -15,7 +15,7 @@ pipeline {
                 ]]) {
                     sh '''
                         terraform init
-                        terraform plan 
+                        terraform plan -out=tfplan
                         terraform apply -auto-approve 
                     '''
                 }
