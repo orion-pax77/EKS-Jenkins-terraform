@@ -238,11 +238,9 @@ Jenkins will:
 
 1. Clone GitHub repository
 2. Run `terraform init`
-3. Run `terraform validate`
-4. Run `terraform plan`
-5. Ask for approval
-6. Run `terraform apply`
-7. Create:
+3. Run `terraform plan`
+4. Run `terraform apply`
+5. Create:
 
    * EKS Cluster
    * Node Group
