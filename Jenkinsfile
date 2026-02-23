@@ -11,12 +11,11 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-cred'
+                    credentialsId: 'aws-creds'
                 ]]) {
                     sh '''
                         terraform init
-                        terraform validate
-                        terraform plan -out=tfplan
+                        terraform plan -auto-approve
                         terraform apply -auto-approve 
                     '''
                 }
