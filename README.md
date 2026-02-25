@@ -279,7 +279,7 @@ cd /var/lib/jenkins/workspace/eks-terraform-pipeline
 Run this command:
 
 ```bash
-terraform destroy
+terraform destroy --auto-approve
 ```
 Or create a separate Jenkins destroy pipeline.
 
